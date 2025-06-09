@@ -1,0 +1,96 @@
+{
+  "name": "@vpavlin/plugin-akash-chat-api",
+  "version": "0.0.1",
+  "type": "module",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "dependencies": {
+    "@ai-sdk/openai": "^1.1.9",
+    "@ai-sdk/ui-utils": "^1.2.8",
+    "@elizaos/core": "^1.0.6",
+    "ai": "^4.3.9",
+    "formdata-node": "^5.0.1",
+    "js-tiktoken": "^1.0.18",
+    "tsup": "8.4.0",
+    "typescript": "^5.8.2"
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "typecheck": "tsc --noEmit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vpavlin/plugin-akash-chat-api.git"
+  },
+  "agentConfig": {
+    "pluginType": "elizaos:plugin:1.0.0",
+    "pluginParameters": {
+      "AKASH_API_KEY": {
+        "type": "string",
+        "description": "API key used for authenticating requests to the Akash Chat API AI service.",
+        "required": true,
+        "sensitive": true
+      },
+      "AKASH_SMALL_MODEL": {
+        "type": "string",
+        "description": "Identifier of the small language model to be used by the Akash Chat API plugin.",
+        "required": false,
+        "sensitive": false
+      },
+      "AKASH_LARGE_MODEL": {
+        "type": "string",
+        "description": "Identifier of the large language model to be used by the Akash Chat API plugin.",
+        "required": false,
+        "sensitive": false
+      },
+      "AKASH_EMBEDDING_MODEL": {
+        "type": "string",
+        "description": "Identifier of the embedding model to generate text embeddings.",
+        "required": false,
+        "sensitive": false
+      },
+      "AKASH_EMBEDDING_DIMENSIONS": {
+        "type": "number",
+        "description": "Number of dimensions expected in the generated text embeddings.",
+        "required": false,
+        "default": 4096,
+        "sensitive": false
+      },
+      "AKASH_BASE_URL": {
+        "type": "string",
+        "description": "Base URL for the Akash Chat API AI API requests.",
+        "required": false,
+        "default": "https://chatapi.akash.network/api/v1",
+        "sensitive": false
+      },
+      "OPENAI_API_KEY": {
+        "type": "string",
+        "description": "API key used to authenticate requests to OpenAI for embedding generation.",
+        "required": false,
+        "sensitive": true
+      },
+      "OPENAI_EMBEDDING_MODEL": {
+        "type": "string",
+        "description": "Model name to use when requesting embeddings from OpenAI.",
+        "required": false,
+        "default": "text-embedding-3-small",
+        "sensitive": false
+      },
+      "OPENAI_EMBEDDING_DIMENSIONS": {
+        "type": "number",
+        "description": "Desired dimensionality of vectors returned from OpenAI embedding requests.",
+        "required": false,
+        "sensitive": false
+      }
+    }
+  }
+}
